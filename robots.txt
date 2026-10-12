@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mna-labs.github.io/mnaplayerplus-site/sitemap.xml
