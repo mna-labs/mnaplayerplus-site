@@ -1,0 +1,17 @@
+# MnaPlayer+
+
+> MnaPlayer+ is a free, ad-free, privacy-respecting music and media player for Android (Windows version too), made by MNA Labs. It plays the user's own files and lets users discover legal online content: Creative Commons music (Jamendo, Openverse, Internet Archive), internet radio (radio-browser.info), podcasts, and YouTube via the official YouTube player only. No accounts, no ads, no analytics, no own servers; online features are optional. 26 languages, automatic by phone language; content follows the phone's region. Status: coming soon to Google Play. Contact: mnaplayer.destek@gmail.com
+
+## Key facts
+- Price: free; no ads; no in-app purchases; no account.
+- Privacy: library, playlists, collections and history stay on the device; no network requests when "Online" is off.
+- YouTube: search via YouTube Data API; playback only in the official embedded player; no downloads, no background playback of YouTube.
+- Downloads: only public-domain / Creative Commons music and podcast episodes, saved with licence and attribution.
+- Voice search: uses Android's speech recognizer; the app requests no microphone permission.
+
+## Pages
+- [Home](https://mna-labs.github.io/mnaplayerplus-site/): overview (EN/TR)
+- [FAQ (English)](https://mna-labs.github.io/mnaplayerplus-site/faq.html)
+- [SSS (Türkçe)](https://mna-labs.github.io/mnaplayerplus-site/sss.html)
+- [Privacy policy](https://mna-labs.github.io/mnaplayerplus-site/privacy.html)
+- [Gizlilik politikası](https://mna-labs.github.io/mnaplayerplus-site/gizlilik.html)
