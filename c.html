@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- No external scripts, styles, fonts, images, or tracking. Everything is
+     inline and self-contained so it works offline and leaks nothing. The
+     collection payload lives ONLY in the URL fragment (#...), which browsers
+     never send to the server, and is decoded client-side purely for display. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>MnaPlayer+ koleksiyonu</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; background: #0f0d14; color: #f3eefc;
+    font: 15px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 360px; background: #1c1a23; border-radius: 22px;
+    padding: 22px; text-align: center;
+  }
+  .cover {
+    width: 160px; height: 160px; margin: 4px auto 16px; border-radius: 18px;
+    display: flex; align-items: flex-end; padding: 12px; color: #fff;
+    font-weight: 900; font-size: 18px; text-align: left; line-height: 1.15;
+    text-shadow: 0 1px 4px rgba(0,0,0,.4);
+    background: linear-gradient(135deg, #311b92, #00e5ff);
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: #b9b2c8; font-size: 13px; margin: 0 0 18px; }
+  a.btn, .btn {
+    display: block; text-decoration: none; border-radius: 22px; padding: 13px;
+    font-weight: 800; margin: 8px 0; cursor: pointer;
+  }
+  .primary { background: #b388ff; color: #1d0f3d; }
+  .ghost { background: #2b2930; color: #f3eefc; }
+  .hint { color: #9a93ab; font-size: 12px; margin-top: 14px; word-break: break-all; }
+  code { background: #2b2930; padding: 2px 6px; border-radius: 6px; }
+  .err { color: #ff8a80; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="cover" id="cover">✨</div>
+  <h1 id="title">MnaPlayer+ koleksiyonu</h1>
+  <p class="sub" id="sub">Bir arkadaşın seninle bir koleksiyon paylaştı.</p>
+
+  <!-- JS-disabled fallback: always visible unless JS hides it. -->
+  <noscript>
+    <p class="sub">Açmak için <b>MnaPlayer+</b> uygulamasını aç →
+      <b>Kütüphane</b> → <b>＋</b> → <b>Bağlantıdan ekle</b> ve bu sayfanın
+      adresini yapıştır.</p>
+  </noscript>
+
+  <div id="actions" hidden>
+    <a class="btn primary" id="openApp">Uygulamada aç</a>
+    <a class="btn ghost" id="getApp">Uygulaman yok mu? İndir</a>
+    <p class="hint">Uygulaman yoksa açılmaz; o zaman uygulamayı açıp bu bağlantıyı
+      <b>Bağlantıdan ekle</b> ile yapıştır.</p>
+  </div>
+  <p class="err" id="error" hidden>Bağlantı geçersiz veya bozuk.</p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var LANDING = "https://mna-labs.github.io/mnaplayerplus-site/";
+  var MAX = 32 * 1024;                 // payload byte cap (mirrors the app)
+  var B64 = /^[A-Za-z0-9_-]+$/;        // base64url charset only
+
+  // Deterministic cover palette — mirrors lib/features/collections/domain/
+  // collection_cover.dart (kCoverPalette), as CSS gradients.
+  var PALETTE = [
+    ["#0D47A1", "#7B1FA2", "#FF1744"], ["#00C853", "#00B8D4"],
+    ["#FF6D00", "#FFD600"], ["#263238", "#6A1B9A"], ["#D50000", "#FF4081"],
+    ["#1B5E20", "#C6FF00"], ["#311B92", "#00E5FF"], ["#BF360C", "#FF8A65"],
+    ["#4A148C", "#00BFA5"]
+  ];
+
+  function b64urlDecode(s) {
+    s = s.replace(/-/g, "+").replace(/_/g, "/");
+    while (s.length % 4) s += "=";
+    return atob(s);
+  }
+
+  function fail() {
+    document.getElementById("error").hidden = false;
+    document.getElementById("sub").hidden = true;
+  }
+
+  var hash = (location.hash || "").replace(/^#/, "").trim();
+  if (!hash || hash.length > MAX || !B64.test(hash)) { fail(); return; }
+
+  var data;
+  try {
+    // Decode base64url → UTF-8 JSON. Pure display; nothing is executed.
+    var bytes = b64urlDecode(hash);
+    var json = decodeURIComponent(escape(bytes));
+    data = JSON.parse(json);
+  } catch (e) { fail(); return; }
+
+  if (!data || typeof data !== "object" || data.v !== 1 ||
+      typeof data.n !== "string" || !data.n.trim()) { fail(); return; }
+
+  // Name via textContent only (never innerHTML) → no HTML/script injection.
+  var name = data.n.trim().slice(0, 200);
+  var titleEl = document.getElementById("title");
+  titleEl.textContent = name;
+  var coverEl = document.getElementById("cover");
+  coverEl.textContent = name;
+
+  var seed = (typeof data.c === "number" && isFinite(data.c)) ? (data.c | 0) : 0;
+  var pal = PALETTE[((seed % PALETTE.length) + PALETTE.length) % PALETTE.length];
+  coverEl.style.background = "linear-gradient(135deg, " + pal.join(", ") + ")";
+
+  // Hand off to the app via the custom scheme (mnaplayerplus://c#<payload>),
+  // with a browser fallback to the landing page when the app isn't installed.
+  var intentUrl = "intent://c#" + hash +
+    "#Intent;scheme=mnaplayerplus;package=mna.playerplus;" +
+    "S.browser_fallback_url=" + encodeURIComponent(LANDING) + ";end";
+
+  document.getElementById("openApp").setAttribute("href", intentUrl);
+  document.getElementById("getApp").setAttribute("href", LANDING);
+  document.getElementById("actions").hidden = false;
+})();
+</script>
+</body>
+</html>
