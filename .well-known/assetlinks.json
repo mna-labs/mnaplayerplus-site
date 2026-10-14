@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "mna.playerplus",
+      "sha256_cert_fingerprints": [
+        "C5:63:F5:A4:25:D2:23:D3:D4:FF:C4:88:EB:00:59:7D:67:0C:D4:1F:6A:F5:6C:32:B0:5F:82:A3:78:E6:EB:8B"
+      ]
+    }
+  }
+]
