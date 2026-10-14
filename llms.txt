@@ -10,8 +10,8 @@
 - Voice search: uses Android's speech recognizer; the app requests no microphone permission.
 
 ## Pages
-- [Home](https://mna-labs.github.io/mnaplayerplus-site/): overview (EN/TR)
-- [FAQ (English)](https://mna-labs.github.io/mnaplayerplus-site/faq.html)
-- [SSS (Türkçe)](https://mna-labs.github.io/mnaplayerplus-site/sss.html)
-- [Privacy policy](https://mna-labs.github.io/mnaplayerplus-site/privacy.html)
-- [Gizlilik politikası](https://mna-labs.github.io/mnaplayerplus-site/gizlilik.html)
+- [Home](https://mnaplayer.com/): overview (EN/TR)
+- [FAQ (English)](https://mnaplayer.com/faq.html)
+- [SSS (Türkçe)](https://mnaplayer.com/sss.html)
+- [Privacy policy](https://mnaplayer.com/privacy.html)
+- [Gizlilik politikası](https://mnaplayer.com/gizlilik.html)

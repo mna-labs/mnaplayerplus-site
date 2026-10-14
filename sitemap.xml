@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://mna-labs.github.io/mnaplayerplus-site/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://mna-labs.github.io/mnaplayerplus-site/privacy.html</loc><lastmod>2026-10-12</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mna-labs.github.io/mnaplayerplus-site/privacy.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mna-labs.github.io/mnaplayerplus-site/gizlilik.html"/></url>
-  <url><loc>https://mna-labs.github.io/mnaplayerplus-site/gizlilik.html</loc><lastmod>2026-10-12</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mna-labs.github.io/mnaplayerplus-site/privacy.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mna-labs.github.io/mnaplayerplus-site/gizlilik.html"/></url>
-  <url><loc>https://mna-labs.github.io/mnaplayerplus-site/faq.html</loc><lastmod>2026-10-12</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mna-labs.github.io/mnaplayerplus-site/faq.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mna-labs.github.io/mnaplayerplus-site/sss.html"/></url>
-  <url><loc>https://mna-labs.github.io/mnaplayerplus-site/sss.html</loc><lastmod>2026-10-12</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mna-labs.github.io/mnaplayerplus-site/faq.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mna-labs.github.io/mnaplayerplus-site/sss.html"/></url>
+  <url><loc>https://mnaplayer.com/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://mnaplayer.com/privacy.html</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mnaplayer.com/privacy.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mnaplayer.com/gizlilik.html"/></url>
+  <url><loc>https://mnaplayer.com/gizlilik.html</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mnaplayer.com/privacy.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mnaplayer.com/gizlilik.html"/></url>
+  <url><loc>https://mnaplayer.com/faq.html</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mnaplayer.com/faq.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mnaplayer.com/sss.html"/></url>
+  <url><loc>https://mnaplayer.com/sss.html</loc><lastmod>2026-10-14</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://mnaplayer.com/faq.html"/><xhtml:link rel="alternate" hreflang="tr" href="https://mnaplayer.com/sss.html"/></url>
 </urlset>
